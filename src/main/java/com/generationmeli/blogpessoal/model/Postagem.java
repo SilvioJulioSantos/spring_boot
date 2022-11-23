@@ -15,13 +15,11 @@ public class Postagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Titulo é obrigatório e não pode ser vazio!")// diz que não pode ser vazio / usar só com string
-    @Size(min = 5, max = 100, message = "O titúlo deve conter no mínimo 5 e no máximo 100 caracteres")
-    //informa o tamanho do campo
+    @NotBlank(message = "O atributo título é Obrigatório!")
+    @Size(min = 5, max = 100, message = "O atributo título deve conter no mínimo 05 e no máximo 100 caracteres")
     private String titulo;
-
-    @NotNull(message = "O texto é obrigatório!")// pode ser usado para qqr coisa
-    @Size(min = 10, max = 1000, message = "O texto deve conter no mínimo 10 e no máximo 1000 caracteres")
+    @NotBlank(message = "O atributo texto é Obrigatório!")
+    @Size(min = 10, max = 1000, message = "O atributo texto deve conter no mínimo 10 e no máximo 1000 caracteres")
     private String texto;
 
     @UpdateTimestamp//Data automaticamente do servidor
