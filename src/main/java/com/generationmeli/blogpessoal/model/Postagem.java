@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_postagens")//Nome da tabela
@@ -23,7 +24,7 @@ public class Postagem {
     private String texto;
 
     @UpdateTimestamp//Data automaticamente do servidor
-    private LocalDate data;
+    private LocalDateTime data;
 
 
     public Long getId() {
@@ -50,11 +51,11 @@ public class Postagem {
         this.texto = texto;
     }
 
-    public LocalDate getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 }
