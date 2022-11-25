@@ -26,6 +26,18 @@ public class Postagem {
     @UpdateTimestamp//Data automaticamente do servidor
     private LocalDateTime data;
 
+    @ManyToOne
+    @JoinColumn(name = "tema_id")
+    private Tema tema;
+
+    public Tema getTema() {
+        return tema;
+    }
+
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
+
 
     public Long getId() {
         return id;
