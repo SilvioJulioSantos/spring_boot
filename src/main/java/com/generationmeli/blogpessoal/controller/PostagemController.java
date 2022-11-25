@@ -53,5 +53,5 @@ public class PostagemController {
     }
     @DeleteMapping("/{id}")
     public void deletePostagem(@PathVariable Long id) {postagemRepository.deleteById(id);}
-
+   // deletando a postagem por um id
 }
