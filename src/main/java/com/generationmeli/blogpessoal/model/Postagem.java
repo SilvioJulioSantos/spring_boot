@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,6 +13,7 @@ import java.time.LocalDateTime;
 public class Postagem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull(message = "O atributo id é obrigatório!")
     private Long id;
 
     @NotBlank(message = "O atributo título é Obrigatório!")

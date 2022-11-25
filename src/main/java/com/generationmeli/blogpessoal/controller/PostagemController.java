@@ -1,6 +1,7 @@
 package com.generationmeli.blogpessoal.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 
 import com.generationmeli.blogpessoal.model.Postagem;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
@@ -44,14 +46,31 @@ public class PostagemController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(postagemRepository.save(postagem));
     }
+
     @PutMapping
-    public ResponseEntity<Postagem> put(@Valid @RequestBody Postagem postagem) {
-        return postagemRepository.findById(postagem.getId())
-                .map(resposta -> ResponseEntity.status(HttpStatus.OK)
-                        .body(postagemRepository.save(postagem)))
-                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    public ResponseEntity<Postagem> putPostagem(@Valid @RequestBody Postagem postagem){
+        if (postagemRepository.existsById(postagem.getId())){
+
+            if (postagemRepository.existsById(postagem.getId()))
+                return ResponseEntity.status(HttpStatus.OK)
+                        .body(postagemRepository.save(postagem));
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
+        }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
     }
+
     @DeleteMapping("/{id}")
-    public void deletePostagem(@PathVariable Long id) {postagemRepository.deleteById(id);}
-   // deletando a postagem por um id
-}
+    public void deletePostagem(@PathVariable long id) {
+        Optional<Postagem> postagem = postagemRepository.findById(id);
+
+        if (postagem.isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            postagemRepository.deleteById(id);
+        }
+
+    }
+
