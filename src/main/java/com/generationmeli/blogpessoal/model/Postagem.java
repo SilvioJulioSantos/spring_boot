@@ -1,5 +1,6 @@
 package com.generationmeli.blogpessoal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -27,7 +28,7 @@ public class Postagem {
     private LocalDateTime data;
 
     @ManyToOne
-    @JoinColumn(name = "tema_id")
+    @JsonIgnoreProperties("postagem")
     private Tema tema;
 
     public Tema getTema() {
