@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import com.generationmeli.blogpessoal.model.Usuario;
 import com.generationmeli.blogpessoal.model.UsuarioLogin;
 import com.generationmeli.blogpessoal.repository.UsuarioRepository;
-import com.generationmeli.blogpessoal.servive.UsuarioService;
+import com.generationmeli.blogpessoal.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
